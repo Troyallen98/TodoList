@@ -1,13 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
+import Page from './Page.js'
 
 function App() {
-  return (
-    <div className="App">
-   <h1 style={Color} >helloWorld</h1>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Page />
+        </div>
+    );
 }
-let Color = {backgroundColor: 'blue'}
+
 
 export default App;
