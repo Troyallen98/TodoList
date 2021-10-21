@@ -45,22 +45,28 @@ class Input extends React.Component {
         return (
             <div>
                 <input
+                    className="input"
                     type='text'
                     value={this.state.currentListItem}
                     onChange={e => this.updateInput('currentListItem', e.target.value)}
                     placeholder='add Todo...'
                 />
-                <button
+                <button 
+                    className="inputBtn"
                     onClick={() => this.componentDidMount()}>
                     Add Todo
                 </button>
-                <ul>
+                <ul className="list-container">
                     {this.state.list.map((item, index) => {
                         return (
-                            <li>
+                            <li className="listItem">
                             {item.value.id}
-                            <button onClick={() => this.removeItem(item.value.id)} data-key={index}>Remove</button>
+                            <button onClick={() => this.removeItem(item.value.id)} data-key={index}
+                            className="deleteBtn">Remove</button>
+                        
                             </li>)
+
+                            
                     })}
                 </ul>
             </div>
