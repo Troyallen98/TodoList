@@ -1,12 +1,12 @@
 import React from 'react'
 import ListState from './ListState.js'
 class Input extends React.Component {
-    constructor(props) {
+    constructor(props, currentListItem) {
         super(props);
 
         this.state = {
-            list: [],
-            currentListItem: '',
+            list:[],
+            currentListItem: ''
         }
     }
 
@@ -21,7 +21,7 @@ class Input extends React.Component {
             key: Date.now(),
             value: {
                 id: this.state.currentListItem,
-                status: null
+                status: 'active'
             }
         };
         const list = [...this.state.list];
@@ -49,15 +49,20 @@ class Input extends React.Component {
     localStorage.clear(key);
     }
 
-    completeAll(value) {
-        localStorage.getItem(JSON.parse(value))
-
-        
-    }
-    // componentDidMount(currentListItem) {
-    //     const pastlife = localStorage.getItem(JSON.parse(currentListItem.value))
+    // completeAll(key,currentListItem) {
+    //   const list = [...this.state.list];
+    //   const completeAllList = localStorage.setItem(key, JSON.parse(currentListItem.value))
+    //   if (currentListItem.value.status == null) {
+    //       currentListItem.value.status.replace(null, true);
+    //   }
+    //   this.setState({
+    //       list: completeAllList
+    //   })
+    // }
+    // componentDidMount(key) {
+    //     JSON.parse(localStorage.getItem(key))
     //     this.setState({
-    //         list: pastlife
+    //         list: []
     //     })
     // }
 
@@ -72,6 +77,7 @@ class Input extends React.Component {
                     onChange={e => this.updateInput('currentListItem', e.target.value)}
                     placeholder='add Todo...'
                 />
+                
                 <button
                     className="inputBtn"
                     onClick={() => this.addItem()}>
