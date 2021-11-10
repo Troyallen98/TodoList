@@ -1,5 +1,5 @@
 import React from 'react'
-import ListState from './ListState.js'
+// import ListState from './ListState.js'
 class Input extends React.Component {
     constructor(props, currentListItem) {
         super(props);
@@ -10,7 +10,7 @@ class Input extends React.Component {
         }
     }
 
-    updateInput(key, value, ) {
+    updateInput(key, value) {
         this.setState({
             [key]: value,
         });
@@ -27,7 +27,9 @@ class Input extends React.Component {
         const list = [...this.state.list];
 
         list.push(currentListItem);
+
         localStorage.setItem(currentListItem.key, JSON.stringify(currentListItem.value));
+
         this.setState({
             list,
             currentListItem: ''
@@ -46,32 +48,27 @@ class Input extends React.Component {
         this.setState({
             list: []
         });
-    localStorage.clear(key);
+        localStorage.clear(key);
     }
 
-    // completeAll(key,currentListItem) {
-    //   const list = [...this.state.list];
-    //   const completeAllList = localStorage.setItem(key, JSON.parse(currentListItem.value))
-    //   if (currentListItem.value.status == null) {
-    //       currentListItem.value.status.replace(null, true);
-    //   }
-    //   this.setState({
-    //       list: completeAllList
-    //   })
+    // completeAll() {
+    //     localStorage.getItem(JSON.parse('value'))
     // }
-    // componentDidMount(key) {
-    //     JSON.parse(localStorage.getItem(key))
-    //     this.setState({
-    //         list: []
-    //     })
-    // }
+    componentDidMount() {
+        const pastlife = window.localStorage.getItem("currentListItem.value")
+        if (pastlife) {
+            this.setState({
+                    list: pastlife
+            })
+        }
+    }
 
-   
+
     render() {
         return (
             <div>
                 <input
-                    className="input"
+                    className="input
                     type='text'
                     value={this.state.currentListItem}
                     onChange={e => this.updateInput('currentListItem', e.target.value)}
@@ -80,30 +77,33 @@ class Input extends React.Component {
                 
                 <button
                     className="inputBtn"
-                    onClick={() => this.addItem()}>
+                onClick={() => this.addItem()}
+                >
                     Add Todo
                 </button>
                 <ul className="list-container">
                     {this.state.list.map((item, index) => {
                         return (
-                            <li className="listItem">
+                            <li className="listItem" key={index}>
                                 {item.value.id}
-                                <button onClick={() => this.removeItem(item.key)} data-key={index}
+                                <button
+                                     onClick={() => this.removeItem(item.key)}
+                                    data-key={index}
                                     className="deleteBtn">Remove</button>
 
                             </li>)
                     })}
                 </ul>
-                <button onClick={() => this.completeAll()}
-                        className="completeAll">All Done!
-                </button>
+                {/* <button onClick={() => this.completeAll()}
+                    className="completeAll">All Done!
+                </button> */}
 
-                <button onClick={() => this.everyItem()} className="stateBtn">The Forgotten & The Works</button>
-                <button onClick={() => this.todoItem()} className="stateBtn">The Works!</button>
-                <button onClick={() => this.finishItem()} className="stateBtn">The Forgotten..</button>
-                
+                {/* <button onClick={() => this.everyItem()} className="stateBtn">The Forgotten & The Works</button> */}
+                {/* <button onClick={() => this.todoItem()} className="stateBtn">The Works!</button> */}
+                {/* <button onClick={() => this.finishItem()} className="stateBtn">The Forgotten..</button> */}
+
                 <button onClick={() => this.removeAll()}
-                        className="deleteAllBtn">Remove
+                    className="deleteAllBtn">Remove
                 </button>
             </div>
         )
