@@ -1,11 +1,11 @@
 // All custom CSS code.
 @import './bootstrap-overwrite.scss';
 .App { 
-    background: url(images/extra.jpg) no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    // background: url(images/extra.jpg) no-repeat center center fixed; 
+    // -webkit-background-size: cover;
+    // -moz-background-size: cover;
+    // -o-background-size: cover;
+    // background-size: cover;
     
     .card {
         background-image: linear-gradient(45deg, rgb(15, 241, 184), rgb(159, 21, 252));
@@ -93,7 +93,11 @@ html {
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
-        background-size: cover;}
+        background-size: cover;
+}
+body{
+    background-color:unset !important;
+}
 
 // after code ise done import styles.......other nonbootstrap
 @import '../../node_modules/bootstrap/scss/bootstrap';

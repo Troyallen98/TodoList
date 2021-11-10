@@ -68,7 +68,7 @@ class Input extends React.Component {
         return (
             <div>
                 <input
-                    className="input
+                    className="input"
                     type='text'
                     value={this.state.currentListItem}
                     onChange={e => this.updateInput('currentListItem', e.target.value)}

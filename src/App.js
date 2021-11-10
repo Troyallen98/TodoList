@@ -3,7 +3,7 @@ import Page from './Page.js'
 
 function App() {
     return (
-        <div className="App">
+        <div className="App" >
             <Page />
         </div>
     );
